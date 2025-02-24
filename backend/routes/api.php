@@ -10,15 +10,15 @@ $method = $_SERVER['REQUEST_METHOD'];
 $basePath = '/api';
 
 // VAI RETIRAR A BARRA(/) DO $basePath E VAI VERIFICAR SE A POSIÇÃO DA REFERÊNCIA(api) DENTRO DE $uri É IGUAL A 0
-// OU SEJA, COMO A $uri POR PADRÃO DEVE SER: api/courses, ENTÃO A POSIÇÃO DA REFERÊNCIA DE FATO VAI SER 0
-// MAS CASO SEJA INFORMADA ALGO DIFERENTE DE: api/courses, POR EXEMPLO: teste/api/courses VAI RETORNAR QUE A ROTA NÃO EXISTE
+// OU SEJA, COMO A $uri POR PADRÃO DEVE SER: api/courses, ENTÃO A POSIÇÃO DA REFERÊNCIA(api) DE FATO VAI SER 0
+// MAS CASO SEJA INFORMADO ALGO DIFERENTE DE: api/courses, POR EXEMPLO: teste/api/courses VAI RETORNAR QUE A ROTA NÃO EXISTE
 if(strpos($uri, trim($basePath, '/')) === 0) {
    $path = substr($uri, strlen($basePath));
 } else {
    $path = $uri;
 }
 
-// VAI VERIFICAR SE O $path POSSUI *OPCIONALMENTE* ALGUM NÚMERO DEPOIS DE "courses/"
+// VAI VERIFICAR SE O $path POSSUI *OPCIONALMENTE(IMAGINANDO QUE SEJA UM ID)* ALGUM NÚMERO DEPOIS DE "courses/"
 if (preg_match('/^courses(?:\/(\d+))?$/', $path, $matches)) {
    $id = null;
 
