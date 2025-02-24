@@ -6,6 +6,10 @@ services:
     build: ./backend
     volumes: 
       - ./backend:/var/www/html/backend
+    depends_on:
+      - database
+    networks:
+      - personal_network
 
   nginx:
     image: nginx:latest
@@ -19,6 +23,8 @@ services:
       - "80:80"
     depends_on:
       - backend
+    networks:
+      - personal_network
 
   database:
     image: mysql:8.0
@@ -32,3 +38,9 @@ services:
       - "2025:3306"
     volumes:
       - ./docker/db:/var/lib/mysql
+    networks:
+      - personal_network
+
+
+networks:
+  personal_network:
