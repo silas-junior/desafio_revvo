@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../app/Controllers/CourseController.php';
+
 // VAI REMOVER QUERY PARAMS E RETORNAR SOMENTE '/api/courses/{id}'
 $uri = trim(explode('?', $_SERVER['REQUEST_URI'])[0], '/');
 $method = $_SERVER['REQUEST_METHOD'];
@@ -20,29 +22,29 @@ if(strpos($uri, trim($basePath, '/')) === 0) {
 
 // VAI VERIFICAR SE O $path POSSUI *OPCIONALMENTE(IMAGINANDO QUE SEJA UM ID)* ALGUM NÚMERO DEPOIS DE "courses/"
 if (preg_match('/^courses(?:\/(\d+))?$/', $path, $matches)) {
+   $courseController = new CourseController();
    $id = null;
 
    if(!empty($matches[1])) {
       $id = intval($matches[1]);
    }
 
-
    switch ($method) {
       case 'GET':
-         if(!$id) {
-            echo "Buscando todos...";
+         if($id) {
+            $courseController->show($id);
          } else {
-            echo "Buscando somente um...";
+            $courseController->index();
          }
          break;
       case 'POST':
-         echo "Criando...";
+         $courseController->store();
          break;
       case 'PUT':
-         echo "Atualizando...";
+         $courseController->update($id);
          break;
       case 'DELETE':
-         echo "Deletando...";
+         $courseController->destroy($id);
          break;
       
       default:
