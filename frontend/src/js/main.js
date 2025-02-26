@@ -1,3 +1,11 @@
+window.addEventListener('load', function(event) {
+    if(!this.window.localStorage.getItem('first_access')) {
+        this.window.localStorage.setItem('first_access', true);
+
+        showModal('modal_new_course');
+    }
+})
+
 function showModal(modal_id) {
     let modal = document.getElementById(`${modal_id}`);
 
