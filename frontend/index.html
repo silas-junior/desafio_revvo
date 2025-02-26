@@ -44,7 +44,7 @@
                     </p>
                     <div>
                         <ul id="list_courses">
-                            <button id="new_course">
+                            <button id="new_course" onclick="showModal('modal_new_course')">
                                 <div style="margin: auto; opacity: 0.6;">
                                     <i id="icon_new_course" class="fa-solid fa-folder-plus"></i>
                                     <h5>ADICIONAR CURSO</h5>
@@ -130,9 +130,51 @@
             <h1>FOOTER</h1>
         </footer>
     </div>
+    
+    <div id="modal_new_course" class="modal_style">
+
+        <!-- Modal content -->
+        <div class="modal_content">
+            <div>
+                <img src="src/images/background_modal_first_access.jpeg" style="border-radius: 15px 15px 0 0; height: auto; object-fit: cover; width: 100%;" alt="">
+            </div>
+          <span onclick="closeModal('modal_new_course')" class="close">&times;</span>
+          <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 30px 120px;">
+            <h4 style="text-transform: uppercase;">Lorem ipsum dolor sit amet</h4>
+            <p style="text-align: center;">Qui voluptates consequatur aut enim explicabo eum maiores dicta. Eum tenetur rerum ut fugiat placeat sit nostrum dolor ex vitae voluptatem est exercitationem beatae?</p>
+            <button type="button"
+                style="
+                    border-radius: 30px;
+                    padding: 15px 100px;
+                    background-color: lightseagreen;
+                    appearance: none;
+                    border: none;
+                    color: white;
+                    font-size: 15px;
+                    font-weight: 600;
+                ">
+                INSCREVA-SE
+            </button>
+          </div>
+        </div>
+      
+      </div>
     <!-- <h1>CRUD de Cursos</h1>
     <button onclick="fetchCursos()">Carregar Cursos</button>
     <ul id="course-list"></ul> -->
+    <!-- <script>
+        let modal = document.getElementById(`${modal_id}`);
+
+        modal.style.display = "block";
+
+        let button_open_modal = 
+
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script> -->
     <script src="src/js/main.js"></script>
     <script src="https://kit.fontawesome.com/5274e8c457.js" crossorigin="anonymous"></script>
 
